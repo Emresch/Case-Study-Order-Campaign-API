@@ -14,7 +14,7 @@ class authors extends Seeder
      */
     public function run(): void
     {
-        $jasonPath = database_path('database\data\authors.json');
+        $jasonPath = database_path('data/authors.json');
         $jasonContent = File::get($jasonPath);
         $authors = json_decode($jasonContent, true);
         foreach ($authors as $author) {

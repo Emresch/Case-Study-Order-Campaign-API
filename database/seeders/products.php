@@ -14,7 +14,7 @@ class products extends Seeder
      */
     public function run(): void
     {
-        $jasonPath = database_path('database\data\products.json');
+        $jasonPath = database_path('data/products.json');
         $jasonContent = File::get($jasonPath);
         $products = json_decode($jasonContent, true);
         foreach ($products as $product) {
