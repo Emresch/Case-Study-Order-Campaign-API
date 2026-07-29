@@ -20,7 +20,7 @@ class products extends Seeder
         foreach ($products as $product) {
             DB::table('products')->insert([
                 'product_id' => $product['product_id'],
-                'title' => $product['title'],
+                'product_title' => $product['title'],
                 'category_id' => $product['category_id'],
                 'category_title' => $product['category_title'],
                 'author' => $product['author'],
