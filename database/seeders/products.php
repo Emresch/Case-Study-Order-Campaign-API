@@ -14,13 +14,13 @@ class products extends Seeder
      */
     public function run(): void
     {
-        $jasonPath = database_path('database\data\products.json');
+        $jasonPath = database_path('data/products.json');
         $jasonContent = File::get($jasonPath);
         $products = json_decode($jasonContent, true);
         foreach ($products as $product) {
             DB::table('products')->insert([
                 'product_id' => $product['product_id'],
-                'title' => $product['title'],
+                'product_title' => $product['title'],
                 'category_id' => $product['category_id'],
                 'category_title' => $product['category_title'],
                 'author' => $product['author'],

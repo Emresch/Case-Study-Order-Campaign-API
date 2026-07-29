@@ -15,7 +15,7 @@ class category extends Seeder
      */
     public function run(): void
     {
-        $jasonPath = database_path('database\data\categories.json');
+        $jasonPath = database_path('data/categories.json');
         $jasonContent = File::get($jasonPath);
         $categories = json_decode($jasonContent, true);
         foreach ($categories as $category) {
