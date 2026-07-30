@@ -123,4 +123,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | API Key Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This value is used to secure API endpoints by requiring a valid API key
+    | to access them. The API key should be set in the ".env" file for
+    | security purposes. Make sure to keep this key secret and do not expose
+    | it in public repositories or client-side code.
+    |   
+    */
+    'api_key' => env('API_KEY'),
+
 ];
