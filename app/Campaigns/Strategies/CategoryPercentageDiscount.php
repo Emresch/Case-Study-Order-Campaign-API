@@ -2,13 +2,21 @@
 
 namespace App\Campaigns\Strategies;
 use App\Campaigns\Contracts\CampaignInterface;
+use App\Models\Campaign;
 
 class CategoryPercentageDiscount implements CampaignInterface
 {
+    protected Campaign $campaign;
+
+    public function __construct(Campaign $campaign)
+    {
+        $this->campaign = $campaign;
+    }
+
     public function isApplicable(array $cartitems, float $totalAmount): bool
     {
         foreach ($cartitems as $item) {
-            if ($item['category_id'] === 1) { // Assuming '1' is the ID for the "Roman" category
+            if ($item['category_id'] === $this->campaign->parameters['category_id'] ?? null) {
                 return true;
             }
         }
@@ -18,15 +26,15 @@ class CategoryPercentageDiscount implements CampaignInterface
     {
         $discount = 0;
         foreach ($cartitems as $item) {
-            if ($item['category_id'] === 1) { // Assuming '1' is the ID for the "Roman" category
-                $discount += $item['price'] * $item['quantity'] * 0.15; // 15% discount for Roman category
+            if ($item['category_id'] === $this->campaign->parameters['category_id'] ?? null) {
+                $discount += $item['price'] * $item['quantity'] * ($this->campaign->parameters['discount_ratio'] ?? 0.15); // 15% discount for Roman category
             }
         }
         return $discount;
     }
     public function getName(): string
     {
-        return '%15 Roman Kategorisi İndirimi';
+        return $this->campaign->title;
     }
 }
 
