@@ -20,10 +20,10 @@ return new class extends Migration
             $table->decimal('price', 8, 2);
             $table->integer('quantity');
             $table->timestamps();
-
-
         });
     }
+
+    
 
     /**
      * Reverse the migrations.
@@ -31,5 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('order_items');
+
     }
 };

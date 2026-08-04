@@ -23,9 +23,11 @@ class DatabaseSeeder extends Seeder
             ]);
 
         $this->call([
-            Category::class,
+            category::class,
             authors::class,
             products::class,
+            CampaignSeeder::class,
+            
         ]);
     }
 }
